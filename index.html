@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -203,9 +203,19 @@
       place-items: center;
       padding: 20px;
       opacity: 0;
-      transition: opacity 0.25s;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s, visibility 0.25s;
     }
-    .modal-backdrop.open { opacity: 1; }
+    .modal-backdrop.open { 
+      opacity: 1; 
+      visibility: visible; 
+      pointer-events: auto; 
+    }
+    .modal-backdrop[hidden] {
+      display: none !important;
+    }
+    
     .modal {
       width: min(940px, 100%);
       max-height: 88vh;
@@ -755,10 +765,6 @@
 
     /* ============================================================
        RESPONSIVE SYSTEM
-       Desktop  : base styles above (≥ 1025px)
-       Tablet   : 769px – 1024px
-       Mobile   : ≤ 768px
-       Small    : ≤ 480px
        ============================================================ */
 
     img, iframe, video { max-width: 100%; }
